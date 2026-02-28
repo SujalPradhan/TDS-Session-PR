@@ -11,12 +11,14 @@ genai.configure(api_key=GEMINI_API_KEY)
 
 model = genai.GenerativeModel("gemini-1.5-flash")
 
+with open("system_prompt.txt", "r") as f:
+    system_prompt = f.read()
 
 @app.route("/chat", methods=["POST"])
 def chat():
 #Endpoint with system prompt and user message
     data = request.json
-    system_prompt = data.get("system_prompt", "You are a helpful assistant.")
+    system_prompt = system_prompt
     user_message = data.get("user_message", "")
     response = model.generate_content(
         system=system_prompt,
