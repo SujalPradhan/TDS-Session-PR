@@ -35,5 +35,18 @@ def health():
     return jsonify({"status": "ok"})
 
 
+students = [
+    {"id": 1, "name": "Alice", "age": 20},
+    {"id": 2, "name": "Bob", "age": 22},
+    {"id": 3, "name": "Charlie", "age": 21},
+    {"id": 4, "name": "David", "age": 23},
+    {"id": 5, "name": "Eve", "age": 20},
+    {"id": 6, "name": "Frank", "age": 22}
+]
+
+app.route("/students", methods=["GET"])
+def get_students():
+    return jsonify(students)
+
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
