@@ -30,12 +30,6 @@ def chat():
         "response": response.text
     })
 
-
-@app.route("/secret", methods=["GET"])
-def secret():
-    secret_key = os.getenv("my-secret-key")
-    return jsonify({"secret": secret_key})
-
 @app.route("/health", methods=["GET"])
 def health():
     return jsonify({"status": "ok"})
